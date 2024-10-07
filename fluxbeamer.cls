@@ -87,6 +87,20 @@
 \useinnertheme{rounded}
 \beamer@compresstrue % Miniframes (Navigations-Punkte) für Subsections immer in einer Zeile, ohne Umbrüche
 
+%%%%%%%%%%%% Footer %%%%%%%%%%%%%%
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \begin{tikzpicture}[remember picture,overlay,shift=(current page.south west)] \begin{scope}[x={(current page.south east)},y={(current page.north west)}]
+      \filldraw [flux-black, yshift=-10mm] plot [smooth cycle] coordinates {(-1, 0.2) (0.15, 0.3) (0.6, 0.15) (0.9, 0.2) (1.9, -0.5) (2, -0.5)};
+    \end{scope}%
+  \end{tikzpicture}%
+
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm]{footlinecolor}%
+      \includegraphics[width=25mm,height=25mm,keepaspectratio]{media/logo-flux-schwarz-transparnet.png}
+    \end{beamercolorbox}}%
+  \vskip0pt%
+}
 
 
 
@@ -111,7 +125,7 @@
 
   % Black footer
   \begin{tikzpicture}[remember picture,overlay,shift=(current page.south west)] \begin{scope}[x={(current page.south east)},y={(current page.north west)}]
-      \filldraw [flux-black] plot [smooth cycle] coordinates {(-1,0) (-1, 0.2) (0.15, 0.3) (0.6, 0.15) (0.9, 0.2) (1.9, -0.5) (2, -0.5) (2, 0)};
+      \filldraw [flux-black] plot [smooth cycle] coordinates {(-1, 0.2) (0.15, 0.3) (0.6, 0.15) (0.9, 0.2) (1.9, -0.5) (2, -0.5)};
     \end{scope}
   \end{tikzpicture}
 
