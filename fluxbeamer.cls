@@ -23,45 +23,10 @@
 \ifgerman
   \RequirePackage[ngerman]{babel}
 \fi
+
 \RequirePackage{csquotes}
 \RequirePackage{hyperref}
 \RequirePackage[absolute,overlay]{textpos}
-
-% custom fonts
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
-\RequirePackage{fontspec}
-
-\setsansfont{ABeeZee}[
-    Extension = .otf ,
-    Path = fonts/ ,
-    UprightFont = *-Regular ,
-    ItalicFont = *-Italic ,
-]
-
-\newfontfamily\titlefont{YuseiMagic}[
-    Extension = .ttf ,
-    Path = fonts/ ,
-    UprightFont = *-Regular ,
-    ItalicFont = *-Regular
-]
-
-\setbeamerfont{title}{series=\bfseries,size=\Large,family=\titlefont}
-\setbeamerfont{frametitle}{series=\bfseries,size=\Large,family=\titlefont}
-\setbeamerfont{framesubtitle}{series=\bfseries,size=\normalsize}
-
-% Format
-\RequirePackage{geometry}
-\geometry{papersize={17.07cm,9.6cm}}
-
-% Ränder außen
-\setbeamersize{text margin left=7.3mm,text margin right=7.3mm} 
-
-% keine Navigationssymbole
-\setbeamertemplate{navigation symbols}{}
-\setbeamercovered{invisible}
-\useinnertheme{rounded}
-\beamer@compresstrue % Miniframes (Navigations-Punkte) für Subsections immer in einer Zeile, ohne Umbrüche
 
 %%%%%%%%%%%% Farben %%%%%%%%%%%%%%%
 \RequirePackage[dvipsnames]{xcolor}
@@ -70,6 +35,58 @@
 \definecolor{flux-blue-dark}{HTML}{404d99}
 \definecolor{flux-blue-light}{HTML}{b3b7d2}
 \definecolor{flux-green-dark}{HTML}{9cc442}
+\definecolor{flux-green-light}{HTML}{dae7bb}
+\definecolor{flux-yellow-dark}{HTML}{f7eb57}
+\definecolor{flux-yellow-light}{HTML}{fbf7c6}
+\definecolor{flux-orange-dark}{HTML}{f2ad40}
+\definecolor{flux-orange-light}{HTML}{f6dfbb}
+\definecolor{flux-red-dark}{HTML}{d93d45}
+\definecolor{flux-red-light}{HTML}{e9b6b7}
+\definecolor{flux-black}{HTML}{121212}
+%freedomland
+\definecolor{flux-gray}{HTML}{9a9a9a}
+%fuckin Brits
+\definecolor{flux-grey}{HTML}{9a9a9a}
+
+% custom fonts
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{fontspec}
+
+\setsansfont{ABeeZee}[
+  Extension = .otf ,
+  Path = fonts/ ,
+  UprightFont = *-Regular ,
+  ItalicFont = *-Italic ,
+]
+
+\newfontfamily\titlefont{YuseiMagic}[
+  Extension = .ttf ,
+  Path = fonts/ ,
+  UprightFont = *-Regular ,
+  ItalicFont = *-Regular
+]
+
+\setbeamerfont{title}{series=\bfseries,size=\Large,family=\titlefont}
+\setbeamerfont{frametitle}{series=\bfseries,size=\Large,family=\titlefont}
+\setbeamerfont{framesubtitle}{series=\bfseries,size=\normalsize}
+
+\setbeamercolor{title}{fg=flux-black}
+\setbeamercolor{frametitle}{fg=flux-black}
+
+% Format
+\RequirePackage{geometry}
+\geometry{papersize={17.07cm,9.6cm}}
+
+% Ränder außen
+\setbeamersize{text margin left=7.3mm,text margin right=7.3mm}
+
+% keine Navigationssymbole
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{invisible}
+\useinnertheme{rounded}
+\beamer@compresstrue % Miniframes (Navigations-Punkte) für Subsections immer in einer Zeile, ohne Umbrüche
+
 
 
 
@@ -79,15 +96,32 @@
 
 \newcommand{\titleframe}{
   \begin{frame}[plain]
-  \titlepage
+    \titlepage
   \end{frame}
 }
 
 \setbeamertemplate{title page}{
 
+  % heading element
   \begin{tikzpicture}[remember picture,overlay,shift=(current page.north west)]
-\begin{scope}[x={(current page.north east)},y={(current page.south west)}]
-        \filldraw [flux-vio-dark] plot [smooth cycle] coordinates {(0, 0) (1, 0) (1, 0.2) (0, 0.2)};
-\end{scope}
-\end{tikzpicture}
+    \begin{scope}[x={(current page.north east)},y={(current page.south west)}]
+      \filldraw [flux-red-light] plot [smooth cycle] coordinates {(-1, 0.82) (0.3, 0.12) (0.8, 0.32) (2, 0.02) (2, -0.12) (-1, -0.12)};
+    \end{scope}
+  \end{tikzpicture}
+
+  % Black footer
+  \begin{tikzpicture}[remember picture,overlay,shift=(current page.south west)] \begin{scope}[x={(current page.south east)},y={(current page.north west)}]
+      \filldraw [flux-black] plot [smooth cycle] coordinates {(-1,0) (-1, 0.2) (0.15, 0.3) (0.6, 0.15) (0.9, 0.2) (1.9, -0.5) (2, -0.5) (2, 0)};
+    \end{scope}
+  \end{tikzpicture}
+
+  % Logo
+  \begin{textblock*}{45mm}(2mm,\dimexpr\paperheight-27mm\relax)
+    \includegraphics[width=45mm,height=45mm,keepaspectratio]{media/logo-flux-schwarz-transparnet.png}
+  \end{textblock*}
+
+  % Title
+  \begin{textblock*}{110mm}(7mm, 35mm)
+    \usebeamerfont*{title}\fontsize{26}{24}\selectfont\inserttitle
+  \end{textblock*}
 }

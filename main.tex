@@ -1,10 +1,48 @@
 \documentclass[de]{fluxbeamer}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{blindtext}
+%\usepackage{lua-visual-debug}
+
+\newcommand{\cbox}[1]{
+\begin{tikzpicture}
+        \filldraw [#1] (0, 0) -- (0, 2) -- (2, 2) -- (2,0) -- cycle;
+    \end{tikzpicture}
+}
+
+\title[Beamer Vorlage]{LaTeX Beamer Vorlage der Flux Hochschulgruppe am KIT}
+%\title[Beamer Vorlage]{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}
 
 \begin{document}
 \titleframe
 \begin{frame}{Boing boing Ich bin ein Titel!}
-    \blindtext[2]    
+    \blindtext[2]
+\end{frame}
+\begin{frame}{Farben!}
+    \begin{center}
+        \begin{table}[]
+            \begin{tabular}{cccccc}
+                \cbox{flux-vio-dark }    &
+                \cbox{flux-vio-light}    &
+                \cbox{flux-blue-dark}    &
+                \cbox{flux-blue-light}   &
+                \cbox{flux-green-dark}   &
+                \cbox{flux-green-light}    \\
+                \cbox{flux-yellow-dark}  &
+                \cbox{flux-yellow-light} &
+                \cbox{flux-orange-dark}  &
+                \cbox{flux-orange-light} &
+                \cbox{flux-red-dark}     &
+                \cbox{flux-red-light}
+            \end{tabular}
+        \end{table}
+    \end{center}
+    \begin{center}
+        \begin{table}[]
+            \begin{tabular}{cc}
+                \cbox{flux-black}
+                \cbox{flux-gray}
+            \end{tabular}
+        \end{table}
+    \end{center}
 \end{frame}
 \end{document}
