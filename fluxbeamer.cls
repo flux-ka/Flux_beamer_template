@@ -170,3 +170,11 @@
   \fi
   \vspace{18mm}
 }
+
+\newcommand{\fluxmark}{%
+  \begin{tikzpicture}
+    \draw[fill=flux-gray, draw=none] (0,0) circle (3pt);
+  \end{tikzpicture}
+}
+
+\setbeamertemplate{itemize items}{\raisebox{.2ex}{\fluxmark}}
