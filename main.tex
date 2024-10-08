@@ -1,11 +1,11 @@
 \documentclass[de, pagenum]{fluxbeamer}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{blindtext}
-%\usepackage{lua-visual-debug}
+\usepackage{lua-visual-debug}
 
 \newcommand{\cbox}[1]{
 \begin{tikzpicture}
-        \filldraw [#1] (0, 0) -- (0, 2) -- (2, 2) -- (2,0) -- cycle;
+        \filldraw [#1] (0, 0) -- (0, 1.5) -- (1.5, 1.5) -- (1.5,0) -- cycle;
     \end{tikzpicture}
 }
 
@@ -44,5 +44,17 @@
             \end{tabular}
         \end{table}
     \end{center}
+\end{frame}
+\begin{frame}{Aufzählungen}
+    \begin{itemize}
+        \item Wie
+        \item sieht
+        \item denn
+        \item so
+        \item ne
+        \item Aufzählung
+        \item aus
+        \item ?
+    \end{itemize}
 \end{frame}
 \end{document}

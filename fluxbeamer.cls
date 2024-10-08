@@ -84,7 +84,9 @@
 \geometry{papersize={17.07cm,9.6cm}}
 
 % Ränder außen
-\setbeamersize{text margin left=7.3mm,text margin right=7.3mm}
+\newlength{\innermargin}
+\setlength{\innermargin}{7.3mm}
+\setbeamersize{text margin left=\innermargin,text margin right=\innermargin}
 
 % keine Navigationssymbole
 \setbeamertemplate{navigation symbols}{}
@@ -157,4 +159,14 @@
   \begin{textblock*}{110mm}(7mm, 35mm)
     \usebeamerfont*{title}\fontsize{26}{24}\selectfont\inserttitle
   \end{textblock*}
+}
+
+%%%%%%%%%%%%%%% Folientitel %%%%%%%%%%%%%%%%%
+\setbeamertemplate{frametitle}{
+  \ifbeamer@plainframe\else%
+    \begin{textblock*}{\dimexpr\paperwidth-30mm-2\innermargin}[0,1](\innermargin,2\innermargin)%
+      \usebeamerfont{frametitle}\insertframetitle%
+    \end{textblock*}%
+  \fi
+  \vspace{18mm}
 }
