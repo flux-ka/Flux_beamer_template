@@ -84,9 +84,12 @@
 \geometry{papersize={17.07cm,9.6cm}}
 
 % Ränder außen
-\newlength{\innermargin}
-\setlength{\innermargin}{7.3mm}
-\setbeamersize{text margin left=\innermargin,text margin right=\innermargin}
+\newlength{\fluxleftmargin}
+\setlength{\fluxleftmargin}{7.3mm}
+
+\newlength{\fluxrightmargin}
+\setlength{\fluxrightmargin}{8mm}
+\setbeamersize{text margin left=\fluxleftmargin,text margin right=\fluxrightmargin, sidebar width right=\fluxrightmargin}
 
 % keine Navigationssymbole
 \setbeamertemplate{navigation symbols}{}
@@ -123,6 +126,15 @@
   \fi
 }
 
+%%%%%%%%%%%%% Squiggle rechts %%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{sidebar canvas right}{%
+  \ifnum \theframenumber=0\else
+    \begin{tikzpicture}[remember picture,overlay,shift=(current page.south west)] \begin{scope}[x={(current page.south east)},y={(current page.north west)}]
+        \draw [flux-black] plot [smooth cycle] coordinates {(0.97, 1.0) (0.95, 0.8) (1.2, 0.6) (0.97, 0.5) (1.0, 0.3) (0.98, 0.2) (0.98, 0.1) (0.97, 0.0) (1.0, 0.0) (1.0, 1.0)};
+      \end{scope}
+    \end{tikzpicture}
+  \fi
+}
 
 
 %%%%%%%%%%%%%%%% TITELSEITE %%%%%%%%%%%%%%%%%%%%%%
@@ -164,13 +176,14 @@
 %%%%%%%%%%%%%%% Folientitel %%%%%%%%%%%%%%%%%
 \setbeamertemplate{frametitle}{
   \ifbeamer@plainframe\else%
-    \begin{textblock*}{\dimexpr\paperwidth-30mm-2\innermargin}[0,1](\innermargin,2\innermargin)%
+    \begin{textblock*}{\dimexpr\paperwidth-30mm-2\fluxleftmargin}[0,1](\fluxleftmargin,\dimexpr\fluxleftmargin+\fluxrightmargin)%
       \usebeamerfont{frametitle}\insertframetitle%
     \end{textblock*}%
   \fi
   \vspace{18mm}
 }
 
+% correct itemization marks
 \newcommand{\fluxmark}{%
   \begin{tikzpicture}
     \draw[fill=flux-gray, draw=none] (0,0) circle (3pt);
@@ -178,3 +191,16 @@
 }
 
 \setbeamertemplate{itemize items}{\raisebox{.2ex}{\fluxmark}}
+
+% correct color for block titles
+\setbeamerfont{block title}{size={\color{flux-blue-dark}}}
+
+
+%%%% links %%%%%%%%
+\RequirePackage{hyperref}
+\hypersetup{
+  urlcolor=black,
+  urlbordercolor=black,
+  pdfborder={1 1 1},
+  pdfborderstyle={/S/U/W 1}   
+}
